@@ -15,6 +15,8 @@ void testLoop() {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
+			emscripten_log(EM_LOG_CONSOLE, "Key un-pressed in sdl polling loop: %c", event.key.keysym.sym);
+			break;
 		case SDL_KEYUP:
 			emscripten_log(EM_LOG_CONSOLE, "Key pressed in sdl polling loop: %c", event.key.keysym.sym);
 			break;
@@ -34,7 +36,7 @@ void testLoop() {
 EMSCRIPTEN_KEEPALIVE void setEventEnable(bool toggle) {
     keyState = toggle ? SDL_ENABLE : SDL_DISABLE;
 
-    emscripten_log(EM_LOG_CONSOLE, "setting event enable keyState: %s", keyState ? "true" : "false");
+    emscripten_log(EM_LOG_CONSOLE, "Setting event enable keyState: %s", keyState ? "true" : "false");
 
     SDL_EventState(SDL_TEXTINPUT, keyState);
     SDL_EventState(SDL_KEYDOWN, keyState);

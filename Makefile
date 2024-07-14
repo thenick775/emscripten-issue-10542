@@ -1,11 +1,14 @@
-# Docker image
-DOCKER_IMAGE = emscripten/emsdk:3.1.53 # uncomment me to use the older image
+# Default Docker image version
+DOCKER_IMAGE_VERSION ?= latest # 3.1.53 was working successfully
 
 # Build directory
 BUILD_DIR = build
 
 # Source directory
 SRC_DIR = $(shell pwd)
+
+# Docker image with version
+DOCKER_IMAGE = emscripten/emsdk:$(DOCKER_IMAGE_VERSION)
 
 # CMake options
 CMAKE_OPTS = -DCMAKE_TOOLCHAIN_FILE=/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
