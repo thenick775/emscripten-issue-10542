@@ -15,10 +15,10 @@ void testLoop() {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
-			emscripten_log(EM_LOG_CONSOLE, "Key un-pressed in sdl polling loop: %c", event.key.keysym.sym);
+			emscripten_log(EM_LOG_CONSOLE, "Key pressed in sdl polling loop: %c", event.key.keysym.sym);
 			break;
 		case SDL_KEYUP:
-			emscripten_log(EM_LOG_CONSOLE, "Key pressed in sdl polling loop: %c", event.key.keysym.sym);
+			emscripten_log(EM_LOG_CONSOLE, "Key un-pressed in sdl polling loop: %c", event.key.keysym.sym);
 			break;
 		};
 	}
