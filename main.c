@@ -24,9 +24,9 @@ void testLoop() {
 	}
 
 	// do some small busy work
-    double now = emscripten_get_now();
-    double elapsedNow = now - (lastNow > 0.0 ? lastNow : now);
-    double nowFrames = elapsedNow / (1000.0 / 60.0); // example frame count for info
+	double now = emscripten_get_now();
+	double elapsedNow = now - (lastNow > 0.0 ? lastNow : now);
+	double nowFrames = elapsedNow / (1000.0 / 60.0); // example frame count for info
 	lastNow = now;
 	iterationCount += 1;
 
