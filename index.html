@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="module" src="example.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <form>
+      <label for="userInput">Type something:</label>
+      <input
+        type="text"
+        id="userInput"
+        name="userInput"
+        onchange="console.log(event.target.value)"
+      />
+    </form>
+    <button onclick="example.toggleInput(false)">
+      Click to disable emscripten captured keyboard input
+    </button>
+    <button onclick="example.toggleInput(true)">
+      Click to enable emscripten captured keyboard input
+    </button>
+    <script type="module">
+      import example from './example.js';
+
+      var Module = {
+        canvas: (function () {
+          return document.getElementById('canvas');
+        })(),
+      };
+
+      example(Module).then(function (m) {
+        console.log('wasm loaded');
+
+        window.example = m; // for convenience
+      });
+    </script>
+  </body>
+</html>
